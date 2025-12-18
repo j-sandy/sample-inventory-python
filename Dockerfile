@@ -14,6 +14,13 @@ RUN pip install --no-cache-dir -r requirements.txt \
 # Copy the current directory contents into the container at /app
 COPY . .
 
+# Create a non-root user
+RUN adduser --disabled-password --gecos '' --shell /bin/bash appuser && \
+    chown -R appuser:appuser /app
+
+# Switch to the non-root user
+USER appuser
+
 # Expose port 8000 for the FastAPI application
 EXPOSE 8000
 
