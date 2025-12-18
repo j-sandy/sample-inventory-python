@@ -14,6 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt \
 # Copy the current directory contents into the container at /app
 COPY . .
 
+# Create a non-root user and switch to it
+RUN useradd --create-home --shell /bin/bash app
+USER app
+
 # Expose port 8000 for the FastAPI application
 EXPOSE 8000
 
