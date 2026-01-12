@@ -18,7 +18,7 @@ COPY . .
 RUN useradd --create-home --shell /bin/bash app
 USER app
 
-# Expose port 8000 for the FastAPI application
+### Expose port 8000 for the FastAPI application
 EXPOSE 8000
 
 # Run the uvicorn server
